@@ -69,11 +69,18 @@ def verificar_tunel_saudavel():
 
 # ========== SALVAR URL NO FIREBASE ==========
 def salvar_url_firebase(url):
-    if firebase_auth_ref and firebase_auth_ref.autenticado:
+    if not url:
+        return
+    if firebase_auth_ref:
         try:
+            # Força reautenticação se necessário
+            if not firebase_auth_ref.autenticado:
+                print("🔐 Reautenticando no Firebase...")
+                firebase_auth_ref.autenticar()
             firebase_auth_ref.salvar_url(url)
-        except:
-            pass
+            print(f"✅ URL salva no Firebase: {url}")
+        except Exception as e:
+            print(f"❌ Erro ao salvar URL no Firebase: {e}")
 
 # ========== MATAR CLOUDFLARED ==========
 def matar_todos_cloudflared():
@@ -199,6 +206,8 @@ def reiniciar_tunel(forcar=False):
             print("😞 Falha ao iniciar!")
         else:
             print(f"🎊 Túnel pronto! URL: {resultado}")
+            # ✅ Garantia extra: salva no Firebase após reiniciar
+            salvar_url_firebase(resultado)
 
         return resultado
     finally:
@@ -213,11 +222,15 @@ def loop_reconexao_programada():
                    (datetime.now() - ultima_ativacao).total_seconds() >= ESPERA_POS_ATIVACAO:
                     if not verificar_tunel_saudavel():
                         print("🔴 Túnel não está respondendo! Gerando novo...")
-                        reiniciar_tunel()
+                        nova_url = reiniciar_tunel()
+                        if nova_url:
+                            salvar_url_firebase(nova_url)  # ✅ Garantia extra no loop
                     
             elif estado_tunel == PARADO:
                 print("🔴 Túnel offline! Tentando ligar...")
-                reiniciar_tunel()
+                nova_url = reiniciar_tunel()
+                if nova_url:
+                    salvar_url_firebase(nova_url)  # ✅ Garantia extra no loop
             
             time.sleep(INTERVALO_VERIFICACAO)
             
@@ -292,6 +305,8 @@ def iniciar_flask(db, monitor, firebase_auth=None, porta=None):
     @app.route('/tunel/reiniciar', methods=['POST'])
     def api_reiniciar_tunel():
         nova_url = reiniciar_tunel(forcar=True)
+        if nova_url:
+            salvar_url_firebase(nova_url)  # ✅ Garantia extra na rota
         return jsonify({'sucesso': True, 'url': nova_url})
 
     # ========== GETs DO MONITOR ==========
