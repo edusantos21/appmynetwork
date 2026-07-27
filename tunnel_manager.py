@@ -1,4 +1,4 @@
-# tunnel_manager.py - VERSÃO FINAL (SAÚDE DO TÚNEL, SEM RENOVAÇÃO PROGRAMADA)
+# tunnel_manager.py - VERSÃO FINAL (GETs DO MONITOR, CRUD NORMAL)
 import subprocess
 import threading
 import time
@@ -42,17 +42,13 @@ ultima_alteracao = None
 thread_reconexao = None
 reconexao_ativa = True
 
-# tempo mínimo entre tentativas que falharam
 COOLDOWN_FALHA = 40
 ultima_tentativa_falha = None
 
-# timeout esperando URL do cloudflared
 TIMEOUT_CONEXAO = 30
 
-# intervalo de verificação de saúde
 INTERVALO_VERIFICACAO = 10
 
-# espera após ativar túnel antes de verificar
 ESPERA_POS_ATIVACAO = 60
 ultima_ativacao = None
 
@@ -208,12 +204,11 @@ def reiniciar_tunel(forcar=False):
     finally:
         tunel_lock.release()
 
-# ========== LOOP DE RECONEXÃO (BASEADO EM SAÚDE) ==========
+# ========== LOOP DE RECONEXÃO ==========
 def loop_reconexao_programada():
     while reconexao_ativa:
         try:
             if estado_tunel == ATIVO:
-                # Só verifica saúde depois do tempo de espera pós-ativação
                 if ultima_ativacao is None or \
                    (datetime.now() - ultima_ativacao).total_seconds() >= ESPERA_POS_ATIVACAO:
                     if not verificar_tunel_saudavel():
@@ -289,6 +284,7 @@ def iniciar_flask(db, monitor, firebase_auth=None, porta=None):
             except:
                 pass
 
+    # ========== TÚNEL ==========
     @app.route('/tunel/status', methods=['GET'])
     def api_status_tunel():
         return jsonify({'estado': estado_tunel, 'url': url_publica})
@@ -298,6 +294,7 @@ def iniciar_flask(db, monitor, firebase_auth=None, porta=None):
         nova_url = reiniciar_tunel(forcar=True)
         return jsonify({'sucesso': True, 'url': nova_url})
 
+    # ========== GETs DO MONITOR ==========
     @app.route('/equipamentos', methods=['GET'])
     def api_equipamentos():
         if monitor_ref:
@@ -315,22 +312,19 @@ def iniciar_flask(db, monitor, firebase_auth=None, porta=None):
     @app.route('/servidores', methods=['GET'])
     def api_servidores():
         if monitor_ref:
-            todos = monitor_ref.get_estado()
-            return jsonify([e for e in todos if e.get('tipo') == 'servidor'])
+            return jsonify(monitor_ref.get_servidores_estado())
         return jsonify([])
 
     @app.route('/energias', methods=['GET'])
     def api_energias():
         if monitor_ref:
-            todos = monitor_ref.get_estado()
-            return jsonify([e for e in todos if e.get('tipo') == 'energia'])
+            return jsonify(monitor_ref.get_energias_estado())
         return jsonify([])
 
     @app.route('/servicos', methods=['GET'])
     def api_servicos():
         if monitor_ref:
-            todos = monitor_ref.get_estado()
-            return jsonify([e for e in todos if e.get('tipo') == 'servico'])
+            return jsonify(monitor_ref.get_servicos_estado())
         return jsonify([])
 
     @app.route('/clientes', methods=['GET'])
@@ -343,6 +337,7 @@ def iniciar_flask(db, monitor, firebase_auth=None, porta=None):
     def api_localidades():
         return jsonify(db.listar_localidades())
 
+    # ========== CRUD EQUIPAMENTOS ==========
     @app.route('/equipamento', methods=['POST'])
     def api_adicionar_equipamento():
         dados = request.json
@@ -364,6 +359,7 @@ def iniciar_flask(db, monitor, firebase_auth=None, porta=None):
         atualizar_monitor(id)
         return jsonify({'sucesso': True})
 
+    # ========== CRUD CLIENTES ==========
     @app.route('/cliente', methods=['POST'])
     def api_adicionar_cliente():
         dados = request.json
@@ -385,12 +381,29 @@ def iniciar_flask(db, monitor, firebase_auth=None, porta=None):
         atualizar_monitor(id)
         return jsonify({'sucesso': True})
 
+    # ========== CRUD LOCALIDADES ==========
     @app.route('/localidade', methods=['POST'])
     def api_adicionar_localidade():
         dados = request.json
         nome = dados.get('nome', '').strip()
         if nome:
             db.salvar_localidade(nome)
+            atualizar_monitor(-1)
+            return jsonify({'sucesso': True})
+        return jsonify({'erro': 'Nome obrigatório'}), 400
+
+    @app.route('/localidade/<nome>', methods=['PUT'])
+    def api_editar_localidade(nome):
+        dados = request.json
+        novo_nome = dados.get('nome', '').strip()
+        if novo_nome and novo_nome != nome:
+            equipamentos = db.listar_equipamentos()
+            for eq in equipamentos:
+                if eq.get('localidade') == nome:
+                    eq['localidade'] = novo_nome
+                    db.salvar_equipamento(eq)
+            db.excluir_localidade(nome)
+            db.salvar_localidade(novo_nome)
             atualizar_monitor(-1)
             return jsonify({'sucesso': True})
         return jsonify({'erro': 'Nome obrigatório'}), 400

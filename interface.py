@@ -82,6 +82,13 @@ class InterfaceApp:
                 return
         lista.append(item_atualizado)
     
+    def _remover_item_das_listas(self, id_removido):
+        """Remove um item de todas as listas locais (quando excluído)"""
+        self.equipamentos = [e for e in self.equipamentos if e.get('id') != id_removido]
+        self.servidores = [s for s in self.servidores if s.get('id') != id_removido]
+        self.energias = [e for e in self.energias if e.get('id') != id_removido]
+        self.servicos = [s for s in self.servicos if s.get('id') != id_removido]
+    
     def iniciar_autenticacao_automatica(self):
         credenciais = self.config.get_firebase_credenciais()
         email = credenciais.get("email", "")
@@ -332,8 +339,8 @@ class InterfaceApp:
                     elif tipo == 'servico':
                         self._atualizar_item_lista(self.servicos, item_atualizado)
                 else:
-                    # Não está em equipamentos → é CLIENTE
-                    pass  # Tratado abaixo
+                    # ✅ FOI EXCLUÍDO - Remove das listas locais (sem consultar banco)
+                    self._remover_item_das_listas(id_alterado)
             
             # ✅ RECARREGA CLIENTES DO BANCO SEMPRE!
             self.clientes = self.db.listar_clientes()
