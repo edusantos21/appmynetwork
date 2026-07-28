@@ -57,6 +57,11 @@ firebase_auth_ref = None
 
 CLOUDFLARED_PATH = os.path.join(os.environ.get('LOCALAPPDATA', os.path.expanduser('~')), 'My Network', 'cloudflared.exe')
 
+# ========== FILA DE URL PENDENTE ==========
+url_pendente_firebase = None
+lock_url_pendente = threading.Lock()
+thread_salvando_url = None
+
 # ========== VERIFICAR SAÚDE DO TÚNEL ==========
 def verificar_tunel_saudavel():
     if not url_publica:
@@ -67,20 +72,47 @@ def verificar_tunel_saudavel():
     except:
         return False
 
-# ========== SALVAR URL NO FIREBASE ==========
+# ========== SALVAR URL NO FIREBASE (COM FILA DE TENTATIVAS) ==========
 def salvar_url_firebase(url):
+    global url_pendente_firebase, thread_salvando_url
     if not url:
         return
-    if firebase_auth_ref:
+    if not firebase_auth_ref:
+        return
+    
+    with lock_url_pendente:
+        url_pendente_firebase = url
+    
+    # Se já tem thread tentando, não cria outra
+    if thread_salvando_url and thread_salvando_url.is_alive():
+        return
+    
+    thread_salvando_url = threading.Thread(target=_tentar_salvar_url, daemon=True)
+    thread_salvando_url.start()
+
+def _tentar_salvar_url():
+    global url_pendente_firebase, thread_salvando_url
+    while True:
+        with lock_url_pendente:
+            url = url_pendente_firebase
+        if not url:
+            thread_salvando_url = None
+            break
+        
         try:
-            # Força reautenticação se necessário
             if not firebase_auth_ref.autenticado:
-                print("🔐 Reautenticando no Firebase...")
+                print("🔐 Autenticando no Firebase...")
                 firebase_auth_ref.autenticar()
+            
             firebase_auth_ref.salvar_url(url)
             print(f"✅ URL salva no Firebase: {url}")
+            with lock_url_pendente:
+                url_pendente_firebase = None
+            thread_salvando_url = None
+            break
         except Exception as e:
-            print(f"❌ Erro ao salvar URL no Firebase: {e}")
+            print(f"❌ Falha ao salvar URL: {e}. Tentando novamente em 10s...")
+            time.sleep(10)
 
 # ========== MATAR CLOUDFLARED ==========
 def matar_todos_cloudflared():
@@ -206,7 +238,6 @@ def reiniciar_tunel(forcar=False):
             print("😞 Falha ao iniciar!")
         else:
             print(f"🎊 Túnel pronto! URL: {resultado}")
-            # ✅ Garantia extra: salva no Firebase após reiniciar
             salvar_url_firebase(resultado)
 
         return resultado
@@ -224,13 +255,13 @@ def loop_reconexao_programada():
                         print("🔴 Túnel não está respondendo! Gerando novo...")
                         nova_url = reiniciar_tunel()
                         if nova_url:
-                            salvar_url_firebase(nova_url)  # ✅ Garantia extra no loop
+                            salvar_url_firebase(nova_url)
                     
             elif estado_tunel == PARADO:
                 print("🔴 Túnel offline! Tentando ligar...")
                 nova_url = reiniciar_tunel()
                 if nova_url:
-                    salvar_url_firebase(nova_url)  # ✅ Garantia extra no loop
+                    salvar_url_firebase(nova_url)
             
             time.sleep(INTERVALO_VERIFICACAO)
             
@@ -243,6 +274,15 @@ def iniciar_tunel_com_reconexao():
 
     reconexao_ativa = True
 
+    # ✅ Garante autenticação ANTES de iniciar o túnel
+    if firebase_auth_ref and not firebase_auth_ref.autenticado:
+        print("🔐 Autenticando Firebase antes do túnel...")
+        try:
+            firebase_auth_ref.autenticar()
+            print("✅ Firebase autenticado!")
+        except Exception as e:
+            print(f"⚠️ Falha na autenticação inicial: {e}")
+
     if thread_reconexao is None or not thread_reconexao.is_alive():
         thread_reconexao = threading.Thread(target=loop_reconexao_programada, daemon=True)
         thread_reconexao.start()
@@ -250,7 +290,7 @@ def iniciar_tunel_com_reconexao():
     reiniciar_tunel(forcar=True)
 
 def parar_tunel():
-    global reconexao_ativa, processo_tunel, estado_tunel, url_publica
+    global reconexao_ativa, processo_tunel, estado_tunel, url_publica, url_pendente_firebase
     reconexao_ativa = False
     matar_todos_cloudflared()
     if processo_tunel:
@@ -261,6 +301,8 @@ def parar_tunel():
     processo_tunel = None
     estado_tunel = PARADO
     url_publica = None
+    with lock_url_pendente:
+        url_pendente_firebase = None
     print("🛑 Túnel parado")
 
 def get_url():
@@ -306,7 +348,7 @@ def iniciar_flask(db, monitor, firebase_auth=None, porta=None):
     def api_reiniciar_tunel():
         nova_url = reiniciar_tunel(forcar=True)
         if nova_url:
-            salvar_url_firebase(nova_url)  # ✅ Garantia extra na rota
+            salvar_url_firebase(nova_url)
         return jsonify({'sucesso': True, 'url': nova_url})
 
     # ========== GETs DO MONITOR ==========
