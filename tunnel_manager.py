@@ -91,28 +91,49 @@ def salvar_url_firebase(url):
     thread_salvando_url.start()
 
 def _tentar_salvar_url():
+    """
+    Thread dedicada para salvar URL no Firebase.
+    - SEMPRE reautentica antes de salvar (evita token expirado)
+    - Se falhar, espera 10s e tenta novamente
+    - Só para quando conseguir salvar ou URL for limpa
+    """
     global url_pendente_firebase, thread_salvando_url
+    
     while True:
+        # Pega a URL pendente (thread-safe)
         with lock_url_pendente:
             url = url_pendente_firebase
+        
+        # Se não tem URL pendente, encerra a thread
         if not url:
             thread_salvando_url = None
             break
         
         try:
-            if not firebase_auth_ref.autenticado:
-                print("🔐 Autenticando no Firebase...")
-                firebase_auth_ref.autenticar()
+            # ✅ PASSO 1: Reautentica SEMPRE (sem verificar se já está autenticado)
+            # Isso garante que o token esteja sempre válido
+            print("🔐 Reautenticando no Firebase...")
+            firebase_auth_ref.autenticar()
+            print("✅ Firebase autenticado com sucesso!")
             
+            # ✅ PASSO 2: Salva a URL
             firebase_auth_ref.salvar_url(url)
             print(f"✅ URL salva no Firebase: {url}")
+            
+            # Limpa a URL pendente (salvamento concluído)
             with lock_url_pendente:
                 url_pendente_firebase = None
+            
+            # Encerra a thread
             thread_salvando_url = None
             break
+            
         except Exception as e:
-            print(f"❌ Falha ao salvar URL: {e}. Tentando novamente em 10s...")
+            # Se falhar (sem internet, Firebase offline, etc.)
+            print(f"❌ Falha ao salvar URL: {e}")
+            print("⏰ Tentando novamente em 10 segundos...")
             time.sleep(10)
+            # Volta pro início do while e tenta de novo
 
 # ========== MATAR CLOUDFLARED ==========
 def matar_todos_cloudflared():

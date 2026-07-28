@@ -1,4 +1,4 @@
-# interface.py - COMPLETO E CORRIGIDO
+# interface.py - COMPLETO COM ABA DE LOGS
 import customtkinter as ctk
 from tkinter import messagebox, filedialog
 import threading
@@ -14,6 +14,8 @@ from aba_conta import AbaConta
 from aba_servidores import AbaServidores
 from aba_energias import AbaEnergias
 from aba_servicos import AbaServicos
+from aba_logs import AbaLogs
+from log_manager import LogManager
 
 
 class InterfaceApp:
@@ -27,6 +29,10 @@ class InterfaceApp:
         self.backup_manager = backup_manager
         self.email_manager = email_manager
         self.tunnel_manager = tunnel_manager
+        
+        # Inicia o gerenciador de logs
+        self.log_manager = LogManager()
+        self.log_manager.iniciar()
         
         ctk.set_appearance_mode("dark")
         ctk.set_default_color_theme("green")
@@ -135,6 +141,7 @@ class InterfaceApp:
         self.tab_configuracoes = self.tabview.add("Configuracoes")
         self.tab_telegram = self.tabview.add("Telegram")
         self.tab_conta = self.tabview.add("Conta")
+        self.tab_logs = self.tabview.add("Logs")
         
         self.aba_equipamentos = AbaEquipamentos(self.tab_equipamentos, self.config, self.db, self.monitor, self.ssh_manager, self.atualizar_dados)
         self.aba_equipamentos.equipamentos = self.equipamentos
@@ -164,6 +171,7 @@ class InterfaceApp:
         self.aba_telegram = AbaTelegram(self.tab_telegram, self.config, self.telegram_manager, None)
         self.aba_conta = AbaConta(self.tab_conta, self.config, self.firebase_auth, self.tunnel_manager)
         self.aba_configuracoes = AbaConfiguracoes(self.tab_configuracoes, self.config, self.monitor, self.atualizar_dados, None)
+        self.aba_logs = AbaLogs(self.tab_logs, self.log_manager)
         
         self.configurar_aba_ssh()
         self.criar_barra_status()

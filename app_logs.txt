@@ -1,0 +1,368 @@
+[19:32:01] Monitor atualizado: 79 equipamentos, 11 clientes | timeout: 0.2s[19:32:02] [cloudflared] 2026-07-28T22:32:02Z INF Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps[19:32:02] [cloudflared] 2026-07-28T22:32:02Z INF Requesting new quick Tunnel on trycloudflare.com...[19:32:03] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:32:05] ✅ Firebase autenticado: cepentas@gmail.com[19:32:06] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:32:07] [cloudflared] 2026-07-28T22:32:07Z INF +--------------------------------------------------------------------------------------------+[19:32:07] [cloudflared] 2026-07-28T22:32:07Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |[19:32:09] [cloudflared] 2026-07-28T22:32:07Z INF |  https://advisors-blake-con-zealand.trycloudflare.com                                      |[19:32:09] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79[19:32:10] 🔐 Reautenticando no Firebase...[19:32:10] ✅ Túnel ativo: https://advisors-blake-con-zealand.trycloudflare.com[19:32:13] 🎊 Túnel pronto! URL: https://advisors-blake-con-zealand.trycloudflare.com[19:32:13] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:32:14] ✅ Firebase autenticado: cepentas@gmail.com[19:32:16] ✅ Firebase autenticado com sucesso![19:32:19] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:32:23] ✅ URL salva no perfil: https://advisors-blake-con-zealand.trycloudflare.com[19:32:25] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:32:26] ✅ URL atualizada na empresa EMP-MRXQO44V-A2Q7[19:32:28] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:32:31]    ✅ URL atualizada no vínculo: w1WxdcC0smLEtsyRSGgC[19:32:32] ⚠️ SSH FIBRANET-01: Dados inválidos (clientes=0), NÃO salvou[19:32:32] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79[19:32:34]    ✅ URL atualizada no vínculo: yfCjVicbslNIGUH8tHsC[19:32:37] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:32:40] ✅ URL atualizada em 2 vínculos[19:32:43] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:32:45] ✅ URL salva no Firebase: https://advisors-blake-con-zealand.trycloudflare.com[19:32:48] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:32:52] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:32:57] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:33:00] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:33:03] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:33:06] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79[19:33:09] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79[19:33:09] ⚠️ SSH FIBRANET-42: Dados inválidos (clientes=0), NÃO salvou[19:33:12] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:33:15] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:33:18] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:33:21] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:33:24] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:33:27] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:33:30] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:33:33] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:33:36] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:33:39] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:33:42] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:33:45] ⚠️ SSH FIBRANET-43: Dados inválidos (clientes=0), NÃO salvou[19:33:45] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:33:47] Encerrando...[19:33:48] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:33:49] 🛑 Túnel parado[19:36:32] Monitor atualizado: 79 equipamentos, 11 clientes | timeout: 0.2s[19:36:33] [cloudflared] 2026-07-28T22:36:33Z INF Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps[19:36:33] [cloudflared] 2026-07-28T22:36:33Z INF Requesting new quick Tunnel on trycloudflare.com...[19:36:34] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:36:36] ✅ Firebase autenticado: cepentas@gmail.com[19:36:37] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:36:39] [cloudflared] 2026-07-28T22:36:39Z INF +--------------------------------------------------------------------------------------------+[19:36:39] [cloudflared] 2026-07-28T22:36:39Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |[19:36:39] [cloudflared] 2026-07-28T22:36:39Z INF |  https://potter-menus-agencies-timely.trycloudflare.com                                    |[19:36:39] ✅ Túnel ativo: https://potter-menus-agencies-timely.trycloudflare.com[19:36:39] 🔐 Reautenticando no Firebase...[19:36:39] 🎊 Túnel pronto! URL: https://potter-menus-agencies-timely.trycloudflare.com[19:36:40] ✅ Firebase autenticado: cepentas@gmail.com[19:36:40] ✅ Firebase autenticado com sucesso![19:36:40] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:36:41] ✅ URL salva no perfil: https://potter-menus-agencies-timely.trycloudflare.com[19:36:42] ✅ URL atualizada na empresa EMP-MRXQO44V-A2Q7[19:36:43] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:36:43]    ✅ URL atualizada no vínculo: w1WxdcC0smLEtsyRSGgC[19:36:44]    ✅ URL atualizada no vínculo: yfCjVicbslNIGUH8tHsC[19:36:44] ✅ URL atualizada em 2 vínculos[19:36:44] ✅ URL salva no Firebase: https://potter-menus-agencies-timely.trycloudflare.com[19:36:46] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:36:49] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:36:52] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:36:55] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:36:58] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:37:01] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:37:03] ⚠️ SSH FIBRANET-01: Dados inválidos (clientes=0), NÃO salvou[19:37:04] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79[19:37:07] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79[19:37:10] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:37:13] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:37:16] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:37:19] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:37:22] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:37:25] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:37:28] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:37:31] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:37:34] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79[19:37:37] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:37:38] ⚠️ SSH FIBRANET-42: Dados inválidos (clientes=0), NÃO salvou[19:37:40] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:37:43] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:37:54] Monitor atualizado: 79 equipamentos, 11 clientes | timeout: 0.2s[19:37:54] [cloudflared] 2026-07-28T22:37:54Z INF Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps[19:37:54] [cloudflared] 2026-07-28T22:37:54Z INF Requesting new quick Tunnel on trycloudflare.com...[19:37:55] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:37:57] ✅ Firebase autenticado: cepentas@gmail.com[19:37:58] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:38:00] [cloudflared] 2026-07-28T22:38:00Z INF +--------------------------------------------------------------------------------------------+[19:38:00] [cloudflared] 2026-07-28T22:38:00Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |[19:38:00] [cloudflared] 2026-07-28T22:38:00Z INF |  https://thus-diameter-performances-bluetooth.trycloudflare.com                            |[19:38:00] 🔐 Reautenticando no Firebase...[19:38:00] ✅ Túnel ativo: https://thus-diameter-performances-bluetooth.trycloudflare.com[19:38:00] 🎊 Túnel pronto! URL: https://thus-diameter-performances-bluetooth.trycloudflare.com[19:38:01] ✅ Firebase autenticado: cepentas@gmail.com[19:38:01] ✅ Firebase autenticado com sucesso![19:38:01] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:38:02] ✅ URL salva no perfil: https://thus-diameter-performances-bluetooth.trycloudflare.com[19:38:03] ✅ URL atualizada na empresa EMP-MRXQO44V-A2Q7[19:38:04]    ✅ URL atualizada no vínculo: w1WxdcC0smLEtsyRSGgC[19:38:04] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:38:05]    ✅ URL atualizada no vínculo: yfCjVicbslNIGUH8tHsC[19:38:05] ✅ URL atualizada em 2 vínculos[19:38:05] ✅ URL salva no Firebase: https://thus-diameter-performances-bluetooth.trycloudflare.com[19:38:07] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:38:10] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79[19:38:13] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79[19:38:16] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:38:19] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:38:22] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:38:24] ⚠️ SSH FIBRANET-01: Dados inválidos (clientes=0), NÃO salvou[19:38:25] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:38:28] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:38:31] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:38:34] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:38:37] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:38:40] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79[19:38:43] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:38:46] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:38:49] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:38:52] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79[19:38:55] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:38:58] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:39:00] ⚠️ SSH FIBRANET-42: Dados inválidos (clientes=0), NÃO salvou[19:39:01] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:39:04] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:39:05] Encerrando...[19:39:07] 🛑 Túnel parado[19:39:23] Monitor atualizado: 79 equipamentos, 11 clientes | timeout: 0.2s[19:39:23] [cloudflared] 2026-07-28T22:39:23Z INF Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps[19:39:23] [cloudflared] 2026-07-28T22:39:23Z INF Requesting new quick Tunnel on trycloudflare.com...[19:39:24] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:39:26] ✅ Firebase autenticado: cepentas@gmail.com[19:39:27] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79[19:39:28] [cloudflared] 2026-07-28T22:39:28Z INF +--------------------------------------------------------------------------------------------+[19:39:28] [cloudflared] 2026-07-28T22:39:28Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |[19:39:28] [cloudflared] 2026-07-28T22:39:28Z INF |  https://adoption-passage-mistress-portal.trycloudflare.com                                |[19:39:28] 🔐 Reautenticando no Firebase...[19:39:28] ✅ Túnel ativo: https://adoption-passage-mistress-portal.trycloudflare.com[19:39:28] 🎊 Túnel pronto! URL: https://adoption-passage-mistress-portal.trycloudflare.com[19:39:29] ✅ Firebase autenticado: cepentas@gmail.com[19:39:29] ✅ Firebase autenticado com sucesso![19:39:30] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:39:30] ✅ URL salva no perfil: https://adoption-passage-mistress-portal.trycloudflare.com[19:39:31] ✅ URL atualizada na empresa EMP-MRXQO44V-A2Q7[19:39:32]    ✅ URL atualizada no vínculo: w1WxdcC0smLEtsyRSGgC[19:39:33]    ✅ URL atualizada no vínculo: yfCjVicbslNIGUH8tHsC[19:39:33] ✅ URL atualizada em 2 vínculos[19:39:33] ✅ URL salva no Firebase: https://adoption-passage-mistress-portal.trycloudflare.com[19:39:33] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:39:36] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:39:39] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:39:42] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:39:45] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79[19:39:48] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:39:51] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:39:53] ⚠️ SSH FIBRANET-01: Dados inválidos (clientes=0), NÃO salvou[19:39:54] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:39:57] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79[19:40:00] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:40:03] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:40:06] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:40:09] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:40:12] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:40:15] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:40:18] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:40:21] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:40:24] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:40:28] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:40:29] ⚠️ SSH FIBRANET-42: Dados inválidos (clientes=0), NÃO salvou[19:40:31] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:40:34] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:40:37] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:40:40] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:40:43] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:40:46] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:40:49] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79[19:40:52] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:40:55] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:40:58] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79[19:43:02] Monitor atualizado: 79 equipamentos, 11 clientes | timeout: 0.2s
+[19:43:03] [cloudflared] 2026-07-28T22:43:03Z INF Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps
+[19:43:03] [cloudflared] 2026-07-28T22:43:03Z INF Requesting new quick Tunnel on trycloudflare.com...
+[19:43:04] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79
+[19:43:05] ✅ Firebase autenticado: cepentas@gmail.com
+[19:43:07] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:43:09] [cloudflared] 2026-07-28T22:43:09Z INF +--------------------------------------------------------------------------------------------+
+[19:43:09] [cloudflared] 2026-07-28T22:43:09Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |
+[19:43:09] [cloudflared] 2026-07-28T22:43:09Z INF |  https://forestry-embassy-minus-tasks.trycloudflare.com                                    |
+[19:43:09] 🔐 Reautenticando no Firebase...
+[19:43:09] ✅ Túnel ativo: https://forestry-embassy-minus-tasks.trycloudflare.com
+[19:43:09] 🎊 Túnel pronto! URL: https://forestry-embassy-minus-tasks.trycloudflare.com
+[19:43:10] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79
+[19:43:10] ✅ Firebase autenticado: cepentas@gmail.com
+[19:43:10] ✅ Firebase autenticado com sucesso!
+[19:43:11] ✅ URL salva no perfil: https://forestry-embassy-minus-tasks.trycloudflare.com
+[19:43:12] ✅ URL atualizada na empresa EMP-MRXQO44V-A2Q7
+[19:43:13] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:43:13]    ✅ URL atualizada no vínculo: w1WxdcC0smLEtsyRSGgC
+[19:43:14]    ✅ URL atualizada no vínculo: yfCjVicbslNIGUH8tHsC
+[19:43:14] ✅ URL atualizada em 2 vínculos
+[19:43:14] ✅ URL salva no Firebase: https://forestry-embassy-minus-tasks.trycloudflare.com
+[19:43:16] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:43:19] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79
+[19:43:22] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:43:25] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79
+[19:43:28] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:43:31] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:43:33] ⚠️ SSH FIBRANET-01: Dados inválidos (clientes=0), NÃO salvou
+[19:43:34] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:43:37] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:43:40] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79
+[19:43:43] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79
+[19:43:46] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:43:49] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:43:52] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:43:55] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79
+[19:43:58] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:44:01] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:44:04] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79
+[19:44:07] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:44:08] ⚠️ SSH FIBRANET-42: Dados inválidos (clientes=0), NÃO salvou
+[19:44:10] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79
+[19:44:13] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79
+[19:44:16] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79
+[19:44:19] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79
+[19:44:22] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:44:25] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:44:28] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79
+[19:44:31] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:44:34] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79
+[19:44:37] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79
+[19:44:40] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79
+[19:44:43] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79
+[19:44:44] ⚠️ SSH FIBRANET-43: Dados inválidos (clientes=0), NÃO salvou
+[19:44:46] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:44:49] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:44:52] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:44:55] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:44:58] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:45:01] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79
+[19:45:04] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:45:33] Monitor atualizado: 79 equipamentos, 11 clientes | timeout: 0.2s
+[19:45:33] [cloudflared] 2026-07-28T22:45:33Z INF Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps
+[19:45:33] [cloudflared] 2026-07-28T22:45:33Z INF Requesting new quick Tunnel on trycloudflare.com...
+[19:45:34] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:45:36] ✅ Firebase autenticado: cepentas@gmail.com
+[19:45:37] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:45:39] [cloudflared] 2026-07-28T22:45:39Z INF +--------------------------------------------------------------------------------------------+
+[19:45:39] [cloudflared] 2026-07-28T22:45:39Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |
+[19:45:39] [cloudflared] 2026-07-28T22:45:39Z INF |  https://libraries-carrier-dave-opponents.trycloudflare.com                                |
+[19:45:39] 🔐 Reautenticando no Firebase...
+[19:45:39] ✅ Túnel ativo: https://libraries-carrier-dave-opponents.trycloudflare.com
+[19:45:39] 🎊 Túnel pronto! URL: https://libraries-carrier-dave-opponents.trycloudflare.com
+[19:45:40] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:45:40] ✅ Firebase autenticado: cepentas@gmail.com
+[19:45:40] ✅ Firebase autenticado com sucesso!
+[19:45:42] ✅ URL salva no perfil: https://libraries-carrier-dave-opponents.trycloudflare.com
+[19:45:42] ✅ URL atualizada na empresa EMP-MRXQO44V-A2Q7
+[19:45:43] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79
+[19:45:43]    ✅ URL atualizada no vínculo: w1WxdcC0smLEtsyRSGgC
+[19:45:44]    ✅ URL atualizada no vínculo: yfCjVicbslNIGUH8tHsC
+[19:45:44] ✅ URL atualizada em 2 vínculos
+[19:45:44] ✅ URL salva no Firebase: https://libraries-carrier-dave-opponents.trycloudflare.com
+[19:45:46] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79
+[19:45:49] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79
+[19:45:52] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:45:55] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:45:58] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:46:01] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:46:03] ⚠️ SSH FIBRANET-01: Dados inválidos (clientes=0), NÃO salvou
+[19:46:04] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:46:07] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:46:10] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:46:13] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:46:16] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:46:19] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:46:22] [MONITOR] 86 IPs em 0.44s | 🟢 7 | 🔴 79
+[19:46:25] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:46:28] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:46:31] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79
+[19:46:34] [MONITOR] 86 IPs em 0.43s | 🟢 7 | 🔴 79
+[19:46:37] [MONITOR] 86 IPs em 0.42s | 🟢 7 | 🔴 79
+[19:46:39] ⚠️ SSH FIBRANET-42: Dados inválidos (clientes=0), NÃO salvou
+[19:46:40] [MONITOR] 86 IPs em 0.43s | 🟢 66 | 🔴 20
+[19:46:41] 📡 SSH FIBRANET-43: SSID coletado = FIBRANET-43
+[19:46:41] 📡 SSH FIBRANET-43: MAC coletado = 00:27:22:17:F5:C9
+[19:46:42] 📡 SSH FIBRANET-43: Clientes coletados = 3
+[19:46:42] Banco de dados inicializado (WAL Mode)
+[19:46:42] ✅ SSH FIBRANET-43: Dados salvos no banco (clientes=3)
+[19:46:43] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:46:46] 🔴 Túnel não está respondendo! Gerando novo...
+[19:46:46] 🔄 Reiniciando túnel...
+[19:46:46] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:46:47] ⚠️ SSH FIBRANET-03: Dados inválidos (clientes=0), NÃO salvou
+[19:46:48] 🚀 Iniciando novo túnel...
+[19:46:48] [cloudflared] 2026-07-28T22:46:48Z INF Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps
+[19:46:49] [cloudflared] 2026-07-28T22:46:48Z INF Requesting new quick Tunnel on trycloudflare.com...
+[19:46:49] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:46:51] ⏳ Já tem outro reinício em andamento, ignorando...
+[19:46:51] 📡 SSH FIBRANET-12: SSID coletado = FIBRANET-12
+[19:46:52] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:46:53] 📡 SSH FIBRANET-12: MAC coletado = 24:A4:3C:89:EE:79
+[19:46:54] 📡 SSH FIBRANET-12: Clientes coletados = 5
+[19:46:55] [cloudflared] 2026-07-28T22:46:55Z INF +--------------------------------------------------------------------------------------------+
+[19:46:55] [cloudflared] 2026-07-28T22:46:55Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |
+[19:46:55] [cloudflared] 2026-07-28T22:46:55Z INF |  https://begins-pants-jar-middle.trycloudflare.com                                         |
+[19:46:55] 🔐 Reautenticando no Firebase...
+[19:46:55] ✅ Túnel ativo: https://begins-pants-jar-middle.trycloudflare.com
+[19:46:55] 🎊 Túnel pronto! URL: https://begins-pants-jar-middle.trycloudflare.com
+[19:46:55] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:46:56] ✅ Firebase autenticado: cepentas@gmail.com
+[19:46:56] ✅ Firebase autenticado com sucesso!
+[19:46:57] ✅ URL salva no perfil: https://begins-pants-jar-middle.trycloudflare.com
+[19:46:57] Banco de dados inicializado (WAL Mode)
+[19:46:57] ✅ SSH FIBRANET-12: Dados salvos no banco (clientes=5)
+[19:46:58] ✅ URL atualizada na empresa EMP-MRXQO44V-A2Q7
+[19:46:58] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:46:59]    ✅ URL atualizada no vínculo: w1WxdcC0smLEtsyRSGgC
+[19:47:00]    ✅ URL atualizada no vínculo: yfCjVicbslNIGUH8tHsC
+[19:47:00] ✅ URL atualizada em 2 vínculos
+[19:47:00] ✅ URL salva no Firebase: https://begins-pants-jar-middle.trycloudflare.com
+[19:47:01] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:47:03] 📡 SSH FIBRANET-18: SSID coletado = FIBRANET-18
+[19:47:04] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:47:05] 📡 SSH FIBRANET-18: MAC coletado = DC:9F:DB:59:69:D2
+[19:47:07] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:47:09] 📡 SSH FIBRANET-18: Clientes coletados = 9
+[19:47:10] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:47:13] Banco de dados inicializado (WAL Mode)
+[19:47:13] ✅ SSH FIBRANET-18: Dados salvos no banco (clientes=9)
+[19:47:13] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:47:16] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:47:19] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:47:22] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:47:25] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:47:28] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:47:32] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:47:35] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:47:38] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:47:39] ⚠️ SSH FIBRANET-04: Dados inválidos (clientes=0), NÃO salvou
+[19:47:41] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:47:44] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:47:45] 📡 SSH FIBRANET-41: SSID coletado = FIBRANET-41
+[19:47:47] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:47:48] 📡 SSH FIBRANET-41: MAC coletado = 00:27:22:CB:99:B2
+[19:47:50] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:47:50] 📡 SSH FIBRANET-41: Clientes coletados = 5
+[19:47:53] [MONITOR] 86 IPs em 0.44s | 🟢 71 | 🔴 15
+[19:47:54] Banco de dados inicializado (WAL Mode)
+[19:47:54] ✅ SSH FIBRANET-41: Dados salvos no banco (clientes=5)
+[19:47:56] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:47:58] 📡 SSH FIBRANET-47: SSID coletado = FIBRANET-47
+[19:47:59] [MONITOR] 86 IPs em 0.44s | 🟢 71 | 🔴 15
+[19:47:59] 📡 SSH FIBRANET-47: MAC coletado = 04:18:D6:AB:9A:3A
+[19:48:00] 📡 SSH FIBRANET-47: Clientes coletados = 0
+[19:48:01] 🔄 Reiniciando túnel...
+[19:48:02] Banco de dados inicializado (WAL Mode)
+[19:48:02] ✅ SSH FIBRANET-47: Dados salvos no banco (clientes=0)
+[19:48:02] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:48:03] 🚀 Iniciando novo túnel...
+[19:48:03] [cloudflared] 2026-07-28T22:48:03Z INF Thank you for trying Cloudflare Tunnel. Doing so, without a Cloudflare account, is a quick way to experiment and try it out. However, be aware that these account-less Tunnels have no uptime guarantee, are subject to the Cloudflare Online Services Terms of Use (https://www.cloudflare.com/website-terms/), and Cloudflare reserves the right to investigate your use of Tunnels for violations of such terms. If you intend to use Tunnels in production you should use a pre-created named tunnel by following: https://developers.cloudflare.com/cloudflare-one/connections/connect-apps
+[19:48:03] [cloudflared] 2026-07-28T22:48:03Z INF Requesting new quick Tunnel on trycloudflare.com...
+[19:48:05] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:48:07] 📡 SSH FIBRANET-07: SSID coletado = AP-ALTO BRANCO
+[19:48:08] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:48:09] [cloudflared] 2026-07-28T22:48:09Z INF +--------------------------------------------------------------------------------------------+
+[19:48:09] 📡 SSH FIBRANET-07: MAC coletado = 24:A4:3C:35:A2:2F
+[19:48:09] [cloudflared] 2026-07-28T22:48:09Z INF |  Your quick Tunnel has been created! Visit it at (it may take some time to be reachable):  |
+[19:48:09] [cloudflared] 2026-07-28T22:48:09Z INF |  https://quarterly-theories-beverages-towards.trycloudflare.com                            |
+[19:48:09] ✅ Túnel ativo: https://quarterly-theories-beverages-towards.trycloudflare.com
+[19:48:09] 🎊 Túnel pronto! URL: https://quarterly-theories-beverages-towards.trycloudflare.com
+[19:48:09] ✅ Firebase autenticado: cepentas@gmail.com
+[19:48:09] ✅ Firebase autenticado com sucesso!
+[19:48:10] 📡 SSH FIBRANET-07: Clientes coletados = 2
+[19:48:11] ✅ URL salva no perfil: https://quarterly-theories-beverages-towards.trycloudflare.com
+[19:48:11] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:48:12] ✅ URL atualizada na empresa EMP-MRXQO44V-A2Q7
+[19:48:13]    ✅ URL atualizada no vínculo: w1WxdcC0smLEtsyRSGgC
+[19:48:14]    ✅ URL atualizada no vínculo: yfCjVicbslNIGUH8tHsC
+[19:48:14] ✅ URL atualizada em 2 vínculos
+[19:48:14] ✅ URL salva no Firebase: https://quarterly-theories-beverages-towards.trycloudflare.com
+[19:48:14] Banco de dados inicializado (WAL Mode)
+[19:48:14] ✅ SSH FIBRANET-07: Dados salvos no banco (clientes=2)
+[19:48:14] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:48:17] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:48:18] 📡 SSH PAINEL AGILITY 02: SSID coletado = AGILITY-02
+[19:48:20] 📡 SSH PAINEL AGILITY 02: MAC coletado = 00:27:22:EA:61:C6
+[19:48:20] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:48:23] 📡 SSH PAINEL AGILITY 02: Clientes coletados = 3
+[19:48:23] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:48:26] Banco de dados inicializado (WAL Mode)
+[19:48:26] ✅ SSH PAINEL AGILITY 02: Dados salvos no banco (clientes=3)
+[19:48:26] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:48:29] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:48:31] 📡 SSH FIBRANET-35: SSID coletado = FIBRANET-35
+[19:48:32] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:48:33] 📡 SSH FIBRANET-35: MAC coletado = DC:9F:DB:5F:9D:1C
+[19:48:35] 📡 SSH FIBRANET-35: Clientes coletados = 2
+[19:48:35] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:48:38] Banco de dados inicializado (WAL Mode)
+[19:48:38] ✅ SSH FIBRANET-35: Dados salvos no banco (clientes=2)
+[19:48:38] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:48:41] [MONITOR] 86 IPs em 0.44s | 🟢 71 | 🔴 15
+[19:48:43] 📡 SSH FIBRANET-17: SSID coletado = FIBRANET-17
+[19:48:44] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:48:45] 📡 SSH FIBRANET-17: MAC coletado = 00:27:22:55:B0:9B
+[19:48:46] 📡 SSH FIBRANET-17: Clientes coletados = 4
+[19:48:47] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:48:49] Banco de dados inicializado (WAL Mode)
+[19:48:49] ✅ SSH FIBRANET-17: Dados salvos no banco (clientes=4)
+[19:48:50] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:48:51] 📡 SSH FIBRANET-16: SSID coletado = FIBRANET-16
+[19:48:53] 📡 SSH FIBRANET-16: MAC coletado = 04:18:D6:49:89:A1
+[19:48:53] 📡 SSH FIBRANET-16: Clientes coletados = 4
+[19:48:53] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:48:54] Banco de dados inicializado (WAL Mode)
+[19:48:54] ✅ SSH FIBRANET-16: Dados salvos no banco (clientes=4)
+[19:48:56] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:48:59] 📡 SSH FIBRANET-15: SSID coletado = FIBRANET-15
+[19:49:00] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:49:01] 📡 SSH FIBRANET-15: MAC coletado = 24:A4:3C:8D:7F:E5
+[19:49:02] 📡 SSH FIBRANET-15: Clientes coletados = 4
+[19:49:03] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:49:06] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:49:06] Banco de dados inicializado (WAL Mode)
+[19:49:06] ✅ SSH FIBRANET-15: Dados salvos no banco (clientes=4)
+[19:49:07] ⚠️ SSH FIBRANET-45-DESATIVADO: Senha não configurada
+[19:49:09] [MONITOR] 86 IPs em 0.44s | 🟢 71 | 🔴 15
+[19:49:11] 📡 SSH FIBRANET-46: SSID coletado = FIBRANET-46
+[19:49:12] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:49:12] 📡 SSH FIBRANET-46: MAC coletado = 00:27:22:4D:43:D0
+[19:49:14] 📡 SSH FIBRANET-46: Clientes coletados = 1
+[19:49:15] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:49:16] Banco de dados inicializado (WAL Mode)
+[19:49:16] ✅ SSH FIBRANET-46: Dados salvos no banco (clientes=1)
+[19:49:17] ⚠️ SSH FIBRANET-23-DESATIVADO: Senha não configurada
+[19:49:18] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:49:21] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:49:22] 📡 SSH FIBRANET-24: SSID coletado = FIBRANET-24
+[19:49:23] 📡 SSH FIBRANET-24: MAC coletado = 00:27:22:43:0D:49
+[19:49:24] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:49:25] 📡 SSH FIBRANET-24: Clientes coletados = 2
+[19:49:27] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:49:28] Banco de dados inicializado (WAL Mode)
+[19:49:28] ✅ SSH FIBRANET-24: Dados salvos no banco (clientes=2)
+[19:49:30] 📡 SSH FIBRANET-25: SSID coletado = FIBRANET-25
+[19:49:30] [MONITOR] 86 IPs em 0.44s | 🟢 71 | 🔴 15
+[19:49:30] 📡 SSH FIBRANET-25: MAC coletado = 00:27:22:41:25:D6
+[19:49:30] 📡 SSH FIBRANET-25: Clientes coletados = 0
+[19:49:31] Banco de dados inicializado (WAL Mode)
+[19:49:31] ✅ SSH FIBRANET-25: Dados salvos no banco (clientes=0)
+[19:49:33] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:49:33] 📡 SSH FIBRANET 5-3: SSID coletado = FIBRANET 5-3
+[19:49:34] 📡 SSH FIBRANET 5-3: MAC coletado = 24:A4:3C:89:F6:AF
+[19:49:34] 📡 SSH FIBRANET 5-3: Clientes coletados = 3
+[19:49:35] Banco de dados inicializado (WAL Mode)
+[19:49:35] ✅ SSH FIBRANET 5-3: Dados salvos no banco (clientes=3)
+[19:49:36] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:49:39] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:49:40] 📡 SSH FIBRANET 5-4: SSID coletado = FIBRANET 5-4
+[19:49:42] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:49:43] 📡 SSH FIBRANET 5-4: MAC coletado = 00:27:22:47:71:B4
+[19:49:44] 📡 SSH FIBRANET 5-4: Clientes coletados = 5
+[19:49:45] [MONITOR] 86 IPs em 0.44s | 🟢 71 | 🔴 15
+[19:49:48] Banco de dados inicializado (WAL Mode)
+[19:49:48] ✅ SSH FIBRANET 5-4: Dados salvos no banco (clientes=5)
+[19:49:48] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:49:51] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:49:54] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:49:54] 📡 SSH FIBRANET-14: SSID coletado = FIBRANET-14
+[19:49:56] 📡 SSH FIBRANET-14: MAC coletado = DC:9F:DB:99:1D:D4
+[19:49:57] [MONITOR] 86 IPs em 0.44s | 🟢 71 | 🔴 15
+[19:49:57] 📡 SSH FIBRANET-14: Clientes coletados = 7
+[19:50:00] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:50:00] Banco de dados inicializado (WAL Mode)
+[19:50:00] ✅ SSH FIBRANET-14: Dados salvos no banco (clientes=7)
+[19:50:03] [MONITOR] 86 IPs em 0.44s | 🟢 71 | 🔴 15
+[19:50:06] 📡 SSH FIBRANET-37: SSID coletado = FIBRANET-37
+[19:50:06] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:50:07] 📡 SSH FIBRANET-37: MAC coletado = 00:27:22:1F:00:44
+[19:50:09] 📡 SSH FIBRANET-37: Clientes coletados = 5
+[19:50:09] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:50:11] Banco de dados inicializado (WAL Mode)
+[19:50:11] ✅ SSH FIBRANET-37: Dados salvos no banco (clientes=5)
+[19:50:12] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:50:15] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:50:18] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:50:18] 📡 SSH FIBRANET-38: SSID coletado = FIBRANET-37.
+[19:50:20] 📡 SSH FIBRANET-38: MAC coletado = DC:9F:DB:47:A4:07
+[19:50:21] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:50:22] 📡 SSH FIBRANET-38: Clientes coletados = 3
+[19:50:24] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:50:25] Banco de dados inicializado (WAL Mode)
+[19:50:25] ✅ SSH FIBRANET-38: Dados salvos no banco (clientes=3)
+[19:50:27] [MONITOR] 86 IPs em 0.44s | 🟢 71 | 🔴 15
+[19:50:30] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:50:33] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:50:36] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:50:39] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:50:41] ⚠️ SSH FIBRANET-36: Dados inválidos (clientes=0), NÃO salvou
+[19:50:42] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:50:45] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:50:46] 📡 SSH FIBRANET-50: SSID coletado = FIBRANET-50
+[19:50:48] 📡 SSH FIBRANET-50: MAC coletado = 00:27:22:EA:4A:25
+[19:50:48] [MONITOR] 86 IPs em 0.44s | 🟢 71 | 🔴 15
+[19:50:49] 📡 SSH FIBRANET-50: Clientes coletados = 1
+[19:50:51] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:50:52] Banco de dados inicializado (WAL Mode)
+[19:50:52] ✅ SSH FIBRANET-50: Dados salvos no banco (clientes=1)
+[19:50:54] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:50:57] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:51:00] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:51:00] 📡 SSH FIBRANET-55: SSID coletado = FIBRANET-55
+[19:51:02] 📡 SSH FIBRANET-55: MAC coletado = DC:9F:DB:5F:9A:47
+[19:51:03] [MONITOR] 86 IPs em 0.45s | 🟢 71 | 🔴 15
+[19:51:04] 📡 SSH FIBRANET-55: Clientes coletados = 5
+[19:51:06] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:51:07] Banco de dados inicializado (WAL Mode)
+[19:51:07] ✅ SSH FIBRANET-55: Dados salvos no banco (clientes=5)
+[19:51:09] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:51:12] 📡 SSH FIBRANET-31: SSID coletado = FIBRANET-31
+[19:51:13] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:51:13] 📡 SSH FIBRANET-31: MAC coletado = DC:9F:DB:4B:F9:78
+[19:51:14] 📡 SSH FIBRANET-31: Clientes coletados = 2
+[19:51:16] [MONITOR] 86 IPs em 0.41s | 🟢 71 | 🔴 15
+[19:51:17] Banco de dados inicializado (WAL Mode)
+[19:51:17] ✅ SSH FIBRANET-31: Dados salvos no banco (clientes=2)
+[19:51:19] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:51:22] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:51:23] 📡 SSH FIBRANET-58: SSID coletado = FIBRANET-58
+[19:51:25] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:51:28] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:51:30] 📡 SSH FIBRANET-58: Clientes coletados = 2
+[19:51:31] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:51:33] Banco de dados inicializado (WAL Mode)
+[19:51:34] ✅ SSH FIBRANET-58: Dados salvos no banco (clientes=2)
+[19:51:34] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:51:37] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:51:40] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:51:40] 📡 SSH FIBRANET-59: SSID coletado = FIBRANET-59
+[19:51:42] 📡 SSH FIBRANET-59: MAC coletado = 00:27:22:43:16:BF
+[19:51:43] [MONITOR] 86 IPs em 0.43s | 🟢 71 | 🔴 15
+[19:51:44] 📡 SSH FIBRANET-59: Clientes coletados = 5
+[19:51:46] [MONITOR] 86 IPs em 0.42s | 🟢 71 | 🔴 15
+[19:51:48] Banco de dados inicializado (WAL Mode)
+[19:51:48] ✅ SSH FIBRANET-59: Dados salvos no banco (clientes=5)
+[19:51:49] [MONITOR] 86 IPs em 0.44s | 🟢 71 | 🔴 15
