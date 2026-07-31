@@ -1,4 +1,4 @@
-# database.py - COMPLETO (WAL Mode + coluna tipo + N/A + sem emoji)
+# database.py - COMPLETO (WAL Mode + coluna tipo + firmware + N/A)
 import sqlite3
 import os
 from datetime import datetime
@@ -36,6 +36,7 @@ class Database:
                 localidade TEXT DEFAULT '',
                 modo_operacao TEXT DEFAULT 'cliente',
                 tipo TEXT DEFAULT 'equipamento',
+                firmware TEXT DEFAULT 'ubiquiti',
                 status TEXT DEFAULT 'N/A',
                 latencia REAL DEFAULT 0,
                 ssh_enabled INTEGER DEFAULT 1,
@@ -49,10 +50,15 @@ class Database:
             )
         ''')
         
-        try:
-            cursor.execute('ALTER TABLE equipamentos ADD COLUMN tipo TEXT DEFAULT "equipamento"')
-        except:
-            pass
+        # Adiciona colunas que podem não existir em versões antigas
+        for coluna, tipo in [
+            ('tipo', 'TEXT DEFAULT "equipamento"'),
+            ('firmware', 'TEXT DEFAULT "ubiquiti"'),
+        ]:
+            try:
+                cursor.execute(f'ALTER TABLE equipamentos ADD COLUMN {coluna} {tipo}')
+            except:
+                pass
         
         cursor.execute('''
             CREATE TABLE IF NOT EXISTS localidades (
@@ -109,6 +115,7 @@ class Database:
                 'localidade': row['localidade'],
                 'modo_operacao': row['modo_operacao'],
                 'tipo': row['tipo'] if 'tipo' in row.keys() else 'equipamento',
+                'firmware': row['firmware'] if 'firmware' in row.keys() else 'ubiquiti',
                 'status': row['status'],
                 'latencia': row['latencia'],
                 'ssh_enabled': bool(row['ssh_enabled']),
@@ -150,7 +157,7 @@ class Database:
             cursor.execute('''
                 UPDATE equipamentos SET
                     nome=?, ip=?, porta=?, localidade=?,
-                    modo_operacao=?, tipo=?, status=?, latencia=?,
+                    modo_operacao=?, tipo=?, firmware=?, status=?, latencia=?,
                     ssh_enabled=?, ssh_usuario=?, ssh_senha=?, ssh_porta=?,
                     dados_snmp=?, ultima_atualizacao=?,
                     p2p_tipo=?, p2p_par=?
@@ -162,6 +169,7 @@ class Database:
                 equipamento.get('localidade', ''),
                 equipamento.get('modo_operacao', 'cliente'),
                 equipamento.get('tipo', 'equipamento'),
+                equipamento.get('firmware', 'ubiquiti'),
                 status,
                 equipamento.get('latencia', 0),
                 1 if equipamento.get('ssh_enabled', True) else 0,
@@ -177,10 +185,10 @@ class Database:
         else:
             cursor.execute('''
                 INSERT INTO equipamentos (
-                    nome, ip, porta, localidade, modo_operacao, tipo,
+                    nome, ip, porta, localidade, modo_operacao, tipo, firmware,
                     status, latencia, ssh_enabled, ssh_usuario, ssh_senha, ssh_porta,
                     dados_snmp, ultima_atualizacao, p2p_tipo, p2p_par
-                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
+                ) VALUES (?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)
             ''', (
                 equipamento.get('nome', ''),
                 equipamento.get('ip', ''),
@@ -188,6 +196,7 @@ class Database:
                 equipamento.get('localidade', ''),
                 equipamento.get('modo_operacao', 'cliente'),
                 equipamento.get('tipo', 'equipamento'),
+                equipamento.get('firmware', 'ubiquiti'),
                 status,
                 equipamento.get('latencia', 0),
                 1 if equipamento.get('ssh_enabled', True) else 0,

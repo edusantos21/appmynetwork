@@ -1,4 +1,4 @@
-# aba_equipamentos.py - PADRAO CORRIGIDO
+# aba_equipamentos.py - COMPLETO COM FIRMWARE (UBIQUITI / BULLET / MIKROTIK / MIMOSA)
 import customtkinter as ctk
 from tkinter import messagebox, ttk
 import threading
@@ -34,7 +34,7 @@ class AbaEquipamentos:
         ctk.CTkButton(btn_frame, text="Editar", command=self.editar, width=100).pack(side="left", padx=5)
         ctk.CTkButton(btn_frame, text="Excluir", command=self.excluir, width=100).pack(side="left", padx=5)
 
-        self.tree = ttk.Treeview(tree_frame, columns=("nome", "ip", "porta", "localidade", "modo", "p2p_info", "status", "latencia", "mac", "ssh", "clientes", "ssid"), show="headings")
+        self.tree = ttk.Treeview(tree_frame, columns=("nome", "ip", "porta", "localidade", "modo", "p2p_info", "status", "latencia", "mac", "ssh", "firmware", "clientes", "ssid"), show="headings")
         self.tree.heading("nome", text="Nome")
         self.tree.heading("ip", text="IP")
         self.tree.heading("porta", text="Porta")
@@ -45,6 +45,7 @@ class AbaEquipamentos:
         self.tree.heading("latencia", text="Latencia (ms)")
         self.tree.heading("mac", text="MAC")
         self.tree.heading("ssh", text="SSH")
+        self.tree.heading("firmware", text="Firmware")
         self.tree.heading("clientes", text="Clientes")
         self.tree.heading("ssid", text="SSID")
 
@@ -58,6 +59,7 @@ class AbaEquipamentos:
         self.tree.column("latencia", width=80)
         self.tree.column("mac", width=130)
         self.tree.column("ssh", width=50)
+        self.tree.column("firmware", width=90)
         self.tree.column("clientes", width=60)
         self.tree.column("ssid", width=120)
 
@@ -104,6 +106,13 @@ class AbaEquipamentos:
         
         mac = dados_snmp.get("mac", "") or eq.get("mac", "")
         ssh_status = "Sim" if eq.get("ssh_enabled", False) else "Nao"
+        
+        firmware = eq.get("firmware", "ubiquiti")
+        if firmware == "ubiquiti": firmware_display = "Ubiquiti"
+        elif firmware == "bullet": firmware_display = "Bullet"
+        elif firmware == "mikrotik": firmware_display = "MikroTik"
+        elif firmware == "mimosa": firmware_display = "Mimosa"
+        else: firmware_display = firmware
 
         clientes_raw = dados_snmp.get("clientes", 0) if isinstance(dados_snmp, dict) else 0
         try:
@@ -119,18 +128,15 @@ class AbaEquipamentos:
         if modo == "p2p":
             p2p_tipo = eq.get("p2p_tipo", "")
             p2p_par = eq.get("p2p_par", "")
-            if p2p_tipo == "ap":
-                p2p_info = f"AP -> {p2p_par}" if p2p_par else "AP"
-            elif p2p_tipo == "station":
-                p2p_info = f"Station <- {p2p_par}" if p2p_par else "Station"
-            else:
-                p2p_info = "Configurar"
+            if p2p_tipo == "ap": p2p_info = f"AP -> {p2p_par}" if p2p_par else "AP"
+            elif p2p_tipo == "station": p2p_info = f"Station <- {p2p_par}" if p2p_par else "Station"
+            else: p2p_info = "Configurar"
 
         valores = (
             eq.get("nome", ""), eq.get("ip", ""), eq.get("porta", ""),
             eq.get("localidade", ""), modo_display, p2p_info,
             status, latencia_str, mac.upper() if mac else "-",
-            ssh_status, clientes, ssid[:20] if ssid else "-",
+            ssh_status, firmware_display, clientes, ssid[:20] if ssid else "-",
         )
 
         item_id = self.tree.insert("", "end", values=valores)
@@ -151,6 +157,14 @@ class AbaEquipamentos:
                 modo_display = "P2P" if eq.get("modo_operacao") == "p2p" else "Cliente"
                 mac = eq.get("dados_snmp", {}).get("mac", "") or eq.get("mac", "")
                 ssh_status = "Sim" if eq.get("ssh_enabled", False) else "Nao"
+                
+                firmware = eq.get("firmware", "ubiquiti")
+                if firmware == "ubiquiti": firmware_display = "Ubiquiti"
+                elif firmware == "bullet": firmware_display = "Bullet"
+                elif firmware == "mikrotik": firmware_display = "MikroTik"
+                elif firmware == "mimosa": firmware_display = "Mimosa"
+                else: firmware_display = firmware
+                    
                 clientes = eq.get("dados_snmp", {}).get("clientes", 0)
                 ssid = eq.get("dados_snmp", {}).get("ssid", "-")[:20]
                 
@@ -158,19 +172,17 @@ class AbaEquipamentos:
                     nome, eq.get("ip", ""), eq.get("porta", ""),
                     eq.get("localidade", ""), modo_display, "-",
                     status, latencia_str, mac.upper() if mac else "-",
-                    ssh_status, clientes, ssid if ssid else "-",
+                    ssh_status, firmware_display, clientes, ssid if ssid else "-",
                 ))
                 break
 
     def _get_p2p_pares_disponiveis(self, p2p_tipo, equipamento_atual=None):
         todos = self.db.listar_equipamentos()
         tipo_oposto = "station" if p2p_tipo == "ap" else "ap" if p2p_tipo == "station" else None
-        if not tipo_oposto:
-            return []
+        if not tipo_oposto: return []
         pares = []
         for eq in todos:
-            if equipamento_atual and eq.get("nome") == equipamento_atual.get("nome"):
-                continue
+            if equipamento_atual and eq.get("nome") == equipamento_atual.get("nome"): continue
             if eq.get("modo_operacao") == "p2p" and eq.get("p2p_tipo") == tipo_oposto:
                 pares.append(eq.get("nome", ""))
         return pares if pares else ["Nenhum equipamento compativel"]
@@ -193,8 +205,7 @@ class AbaEquipamentos:
             combo_p2p_par.configure(values=pares)
             if pares and pares[0] != "Nenhum equipamento compativel":
                 combo_p2p_par.set(equipamento.get("p2p_par") if equipamento and equipamento.get("p2p_par") in pares else pares[0])
-            else:
-                combo_p2p_par.set("")
+            else: combo_p2p_par.set("")
         
         p2p_tipo_var.trace("w", atualizar_combo)
         pares_iniciais = self._get_p2p_pares_disponiveis(p2p_tipo_var.get(), equipamento)
@@ -205,21 +216,36 @@ class AbaEquipamentos:
         
         return frame_p2p, p2p_tipo_var, combo_p2p_par
 
+    def _criar_frame_firmware(self, parent, equipamento=None):
+        """Cria o frame de seleção de firmware (Ubiquiti / Bullet / MikroTik / Mimosa)"""
+        frame_fw = ctk.CTkFrame(parent)
+        ctk.CTkLabel(frame_fw, text="Firmware do Equipamento", font=("Arial", 14, "bold")).pack(anchor="w", pady=(5, 10))
+        
+        fw_var = ctk.StringVar(value=equipamento.get("firmware", "ubiquiti") if equipamento else "ubiquiti")
+        frame_opcoes = ctk.CTkFrame(frame_fw)
+        frame_opcoes.pack(anchor="w", pady=5)
+        ctk.CTkRadioButton(frame_opcoes, text="Ubiquiti XW/XM (AirOS)", variable=fw_var, value="ubiquiti").pack(anchor="w", padx=10, pady=3)
+        ctk.CTkRadioButton(frame_opcoes, text="Ubiquiti XS5 / Bullet (AirOS legado)", variable=fw_var, value="bullet").pack(anchor="w", padx=10, pady=3)
+        ctk.CTkRadioButton(frame_opcoes, text="MikroTik (RouterOS)", variable=fw_var, value="mikrotik").pack(anchor="w", padx=10, pady=3)
+        ctk.CTkRadioButton(frame_opcoes, text="Mimosa (HTTP/API - sem SSH)", variable=fw_var, value="mimosa").pack(anchor="w", padx=10, pady=3)
+        
+        return frame_fw, fw_var
+
     def adicionar(self):
         self.localidades = self.db.listar_localidades()
         
         dialog = ctk.CTkToplevel(self.parent)
         dialog.title("Adicionar Equipamento")
-        dialog.geometry("550x650")
-        dialog.minsize(550, 500)
+        dialog.geometry("550x830")
+        dialog.minsize(550, 680)
         dialog.transient(self.parent)
         dialog.grab_set()
         dialog.update_idletasks()
         x = (dialog.winfo_screenwidth() // 2) - (275)
-        y = (dialog.winfo_screenheight() // 2) - (325)
-        dialog.geometry(f"550x650+{x}+{y}")
+        y = (dialog.winfo_screenheight() // 2) - (415)
+        dialog.geometry(f"550x830+{x}+{y}")
 
-        main_frame = ctk.CTkScrollableFrame(dialog, width=520, height=580)
+        main_frame = ctk.CTkScrollableFrame(dialog, width=520, height=760)
         main_frame.pack(fill="both", expand=True, padx=10, pady=10)
 
         ctk.CTkLabel(main_frame, text="Dados do Equipamento", font=("Arial", 14, "bold")).pack(anchor="w", pady=(10, 5))
@@ -237,8 +263,7 @@ class AbaEquipamentos:
         localidades_lista = self.localidades.copy() if self.localidades else ["Nenhuma localidade cadastrada"]
         combo_local = ctk.CTkComboBox(main_frame, values=localidades_lista, width=450)
         combo_local.pack(anchor="w", pady=5)
-        if localidades_lista[0] != "Nenhuma localidade cadastrada":
-            combo_local.set(localidades_lista[0])
+        if localidades_lista[0] != "Nenhuma localidade cadastrada": combo_local.set(localidades_lista[0])
 
         ctk.CTkLabel(main_frame, text="Modo de Operacao", font=("Arial", 14, "bold")).pack(anchor="w", pady=(20, 5))
         modo_var = ctk.StringVar(value="cliente")
@@ -250,12 +275,16 @@ class AbaEquipamentos:
         frame_p2p.pack(fill="x", pady=10)
         
         def on_modo_change(*args):
-            if modo_var.get() == "p2p":
-                frame_p2p_container.pack(fill="x", pady=10)
-            else:
-                frame_p2p_container.pack_forget()
+            if modo_var.get() == "p2p": frame_p2p_container.pack(fill="x", pady=10)
+            else: frame_p2p_container.pack_forget()
         modo_var.trace("w", on_modo_change)
         on_modo_change()
+
+        # FIRMWARE (com Mimosa)
+        frame_fw_container = ctk.CTkFrame(main_frame)
+        frame_fw, fw_var = self._criar_frame_firmware(frame_fw_container)
+        frame_fw.pack(fill="x", pady=10)
+        frame_fw_container.pack(fill="x")
 
         ctk.CTkLabel(main_frame, text="Configuracoes SSH", font=("Arial", 14, "bold")).pack(anchor="w", pady=(20, 5))
         ssh_var = ctk.BooleanVar(value=True)
@@ -278,18 +307,16 @@ class AbaEquipamentos:
         def salvar():
             nome = entry_nome.get().strip()
             ip = entry_ip.get().strip()
-            if not nome or not ip:
-                messagebox.showwarning("Aviso", "Preencha Nome e IP!")
-                return
+            if not nome or not ip: messagebox.showwarning("Aviso", "Preencha Nome e IP!"); return
             
             localidade = combo_local.get()
-            if localidade == "Nenhuma localidade cadastrada":
-                localidade = ""
+            if localidade == "Nenhuma localidade cadastrada": localidade = ""
             
             equipamento = {
                 "nome": nome, "ip": ip, "porta": entry_porta.get().strip() or "80",
                 "localidade": localidade, "modo_operacao": modo_var.get(),
-                "tipo": "equipamento", "status": "N/A", "latencia": 0,
+                "tipo": "equipamento", "firmware": fw_var.get(),
+                "status": "N/A", "latencia": 0,
                 "ssh_enabled": ssh_var.get(), "ssh_usuario": entry_ssh_user.get().strip() or "ubnt",
                 "ssh_senha": entry_ssh_pass.get(),
                 "ssh_porta": int(entry_ssh_port.get()) if entry_ssh_port.get().isdigit() else 22,
@@ -311,72 +338,57 @@ class AbaEquipamentos:
                     if sucesso:
                         equipamento["id"] = eq_id
                         self.equipamentos.append(equipamento)
-                    
                     self.monitor.atualizar_configuracoes(self.equipamentos, self.config.get_configuracoes(), self.config.get_clientes())
                     lbl_status.after(0, lambda: lbl_status.configure(text="Salvo!", text_color="green"))
                     self.atualizar_lista()
                     dialog.after(0, dialog.destroy)
                 except Exception as e:
-                    erro_msg = str(e)
-                    lbl_status.after(0, lambda msg=erro_msg: lbl_status.configure(text=f"Erro: {msg}", text_color="red"))
+                    lbl_status.after(0, lambda msg=str(e): lbl_status.configure(text=f"Erro: {msg}", text_color="red"))
 
             threading.Thread(target=salvar_db, daemon=True).start()
 
         ctk.CTkButton(main_frame, text="Salvar", command=salvar, width=200).pack(pady=20)
 
     def editar(self):
-        if not self.item_selecionado:
-            messagebox.showwarning("Aviso", "Selecione um equipamento")
-            return
+        if not self.item_selecionado: messagebox.showwarning("Aviso", "Selecione um equipamento"); return
 
         try:
             valores = self.tree.item(self.item_selecionado, "values")
-            if not valores:
-                return
-        except:
-            self.item_selecionado = None
-            return
+            if not valores: return
+        except: self.item_selecionado = None; return
 
         nome_equip = valores[0]
         idx = next((i for i, eq in enumerate(self.equipamentos) if eq.get("nome") == nome_equip), None)
-        if idx is None:
-            return
+        if idx is None: return
 
         eq = self.equipamentos[idx]
         self.localidades = self.db.listar_localidades()
 
         dialog = ctk.CTkToplevel(self.parent)
         dialog.title("Editar Equipamento")
-        dialog.geometry("550x650")
-        dialog.minsize(550, 500)
+        dialog.geometry("550x830")
+        dialog.minsize(550, 680)
         dialog.transient(self.parent)
         dialog.grab_set()
         dialog.update_idletasks()
         x = (dialog.winfo_screenwidth() // 2) - (275)
-        y = (dialog.winfo_screenheight() // 2) - (325)
-        dialog.geometry(f"550x650+{x}+{y}")
+        y = (dialog.winfo_screenheight() // 2) - (415)
+        dialog.geometry(f"550x830+{x}+{y}")
 
-        main_frame = ctk.CTkScrollableFrame(dialog, width=520, height=580)
+        main_frame = ctk.CTkScrollableFrame(dialog, width=520, height=760)
         main_frame.pack(fill="both", expand=True, padx=10, pady=10)
 
         ctk.CTkLabel(main_frame, text="Dados do Equipamento", font=("Arial", 14, "bold")).pack(anchor="w", pady=(10, 5))
         ctk.CTkLabel(main_frame, text="Nome:").pack(anchor="w", pady=(10, 0))
-        entry_nome = ctk.CTkEntry(main_frame, width=450)
-        entry_nome.insert(0, eq.get("nome", ""))
-        entry_nome.pack(anchor="w", pady=5)
+        entry_nome = ctk.CTkEntry(main_frame, width=450); entry_nome.insert(0, eq.get("nome", "")); entry_nome.pack(anchor="w", pady=5)
         ctk.CTkLabel(main_frame, text="IP:").pack(anchor="w", pady=(10, 0))
-        entry_ip = ctk.CTkEntry(main_frame, width=450)
-        entry_ip.insert(0, eq.get("ip", ""))
-        entry_ip.pack(anchor="w", pady=5)
+        entry_ip = ctk.CTkEntry(main_frame, width=450); entry_ip.insert(0, eq.get("ip", "")); entry_ip.pack(anchor="w", pady=5)
         ctk.CTkLabel(main_frame, text="Porta HTTP:").pack(anchor="w", pady=(10, 0))
-        entry_porta = ctk.CTkEntry(main_frame, width=200)
-        entry_porta.insert(0, eq.get("porta", "80"))
-        entry_porta.pack(anchor="w", pady=5)
+        entry_porta = ctk.CTkEntry(main_frame, width=200); entry_porta.insert(0, eq.get("porta", "80")); entry_porta.pack(anchor="w", pady=5)
         ctk.CTkLabel(main_frame, text="Localidade:").pack(anchor="w", pady=(10, 0))
         localidades_lista = self.localidades.copy() if self.localidades else ["Nenhuma localidade cadastrada"]
         combo_local = ctk.CTkComboBox(main_frame, values=localidades_lista, width=450)
-        combo_local.set(eq.get("localidade", ""))
-        combo_local.pack(anchor="w", pady=5)
+        combo_local.set(eq.get("localidade", "")); combo_local.pack(anchor="w", pady=5)
 
         ctk.CTkLabel(main_frame, text="Modo de Operacao", font=("Arial", 14, "bold")).pack(anchor="w", pady=(20, 5))
         modo_var = ctk.StringVar(value=eq.get("modo_operacao", "cliente"))
@@ -388,28 +400,25 @@ class AbaEquipamentos:
         frame_p2p.pack(fill="x", pady=10)
         
         def on_modo_change(*args):
-            if modo_var.get() == "p2p":
-                frame_p2p_container.pack(fill="x", pady=10)
-            else:
-                frame_p2p_container.pack_forget()
-        modo_var.trace("w", on_modo_change)
-        on_modo_change()
+            if modo_var.get() == "p2p": frame_p2p_container.pack(fill="x", pady=10)
+            else: frame_p2p_container.pack_forget()
+        modo_var.trace("w", on_modo_change); on_modo_change()
+
+        # FIRMWARE (com Mimosa)
+        frame_fw_container = ctk.CTkFrame(main_frame)
+        frame_fw, fw_var = self._criar_frame_firmware(frame_fw_container, eq)
+        frame_fw.pack(fill="x", pady=10)
+        frame_fw_container.pack(fill="x")
 
         ctk.CTkLabel(main_frame, text="Configuracoes SSH", font=("Arial", 14, "bold")).pack(anchor="w", pady=(20, 5))
         ssh_var = ctk.BooleanVar(value=eq.get("ssh_enabled", True))
         ctk.CTkCheckBox(main_frame, text="Habilitar coleta SSH", variable=ssh_var).pack(anchor="w", pady=5)
         ctk.CTkLabel(main_frame, text="Usuario SSH:").pack(anchor="w", pady=(10, 0))
-        entry_ssh_user = ctk.CTkEntry(main_frame, width=450)
-        entry_ssh_user.insert(0, eq.get("ssh_usuario", "ubnt"))
-        entry_ssh_user.pack(anchor="w", pady=5)
+        entry_ssh_user = ctk.CTkEntry(main_frame, width=450); entry_ssh_user.insert(0, eq.get("ssh_usuario", "ubnt")); entry_ssh_user.pack(anchor="w", pady=5)
         ctk.CTkLabel(main_frame, text="Senha SSH:").pack(anchor="w", pady=(10, 0))
-        entry_ssh_pass = ctk.CTkEntry(main_frame, width=450, show="*")
-        entry_ssh_pass.insert(0, eq.get("ssh_senha", ""))
-        entry_ssh_pass.pack(anchor="w", pady=5)
+        entry_ssh_pass = ctk.CTkEntry(main_frame, width=450, show="*"); entry_ssh_pass.insert(0, eq.get("ssh_senha", "")); entry_ssh_pass.pack(anchor="w", pady=5)
         ctk.CTkLabel(main_frame, text="Porta SSH:").pack(anchor="w", pady=(10, 0))
-        entry_ssh_port = ctk.CTkEntry(main_frame, width=200)
-        entry_ssh_port.insert(0, str(eq.get("ssh_porta", 22)))
-        entry_ssh_port.pack(anchor="w", pady=5)
+        entry_ssh_port = ctk.CTkEntry(main_frame, width=200); entry_ssh_port.insert(0, str(eq.get("ssh_porta", 22))); entry_ssh_port.pack(anchor="w", pady=5)
 
         lbl_status = ctk.CTkLabel(main_frame, text="", font=("Arial", 11))
         lbl_status.pack(anchor="w", pady=5)
@@ -421,6 +430,7 @@ class AbaEquipamentos:
             localidade = combo_local.get()
             eq["localidade"] = "" if localidade == "Nenhuma localidade cadastrada" else localidade
             eq["modo_operacao"] = modo_var.get()
+            eq["firmware"] = fw_var.get()
             eq["ssh_enabled"] = ssh_var.get()
             eq["ssh_usuario"] = entry_ssh_user.get().strip() or "ubnt"
             eq["ssh_senha"] = entry_ssh_pass.get()
@@ -430,9 +440,7 @@ class AbaEquipamentos:
                 eq["p2p_tipo"] = p2p_tipo_var.get()
                 par = combo_p2p_par.get()
                 eq["p2p_par"] = par if par and par != "Nenhum equipamento compativel" else ""
-            else:
-                eq["p2p_tipo"] = ""
-                eq["p2p_par"] = ""
+            else: eq["p2p_tipo"] = ""; eq["p2p_par"] = ""
 
             lbl_status.configure(text="Salvando...", text_color="orange")
 
@@ -444,43 +452,30 @@ class AbaEquipamentos:
                     self._atualizar_linha(idx)
                     dialog.after(0, dialog.destroy)
                 except Exception as e:
-                    erro_msg = str(e)
-                    lbl_status.after(0, lambda msg=erro_msg: lbl_status.configure(text=f"Erro: {msg}", text_color="red"))
+                    lbl_status.after(0, lambda msg=str(e): lbl_status.configure(text=f"Erro: {msg}", text_color="red"))
 
             threading.Thread(target=salvar_db, daemon=True).start()
 
         ctk.CTkButton(main_frame, text="Salvar", command=salvar, width=200).pack(pady=20)
 
     def excluir(self):
-        if not self.item_selecionado:
-            messagebox.showwarning("Aviso", "Selecione um equipamento")
-            return
-
+        if not self.item_selecionado: messagebox.showwarning("Aviso", "Selecione um equipamento"); return
         try:
             valores = self.tree.item(self.item_selecionado, "values")
-            if not valores:
-                return
-        except:
-            self.item_selecionado = None
-            return
+            if not valores: return
+        except: self.item_selecionado = None; return
 
         nome_equip = valores[0]
         idx = next((i for i, eq in enumerate(self.equipamentos) if eq.get("nome") == nome_equip), None)
-        if idx is None:
-            return
+        if idx is None: return
 
         if messagebox.askyesno("Confirmar", f"Excluir equipamento '{nome_equip}'?"):
             eq_id = self.equipamentos[idx].get("id")
-
             def excluir_db():
                 try:
-                    if eq_id:
-                        self.db.excluir_equipamento(eq_id)
+                    if eq_id: self.db.excluir_equipamento(eq_id)
                     del self.equipamentos[idx]
                     self.monitor.atualizar_configuracoes(self.equipamentos, self.config.get_configuracoes(), self.config.get_clientes())
                     self.atualizar_lista()
-                except Exception as e:
-                    erro_msg = str(e)
-                    messagebox.showerror("Erro", f"Erro ao excluir: {erro_msg}")
-
+                except Exception as e: messagebox.showerror("Erro", f"Erro ao excluir: {e}")
             threading.Thread(target=excluir_db, daemon=True).start()

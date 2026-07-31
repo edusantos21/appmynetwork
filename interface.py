@@ -1,4 +1,4 @@
-# interface.py - COMPLETO COM ABA DE LOGS
+# interface.py - COMPLETO COM ABA DE LOGS + CALLBACK SSH (CORRIGIDO)
 import customtkinter as ctk
 from tkinter import messagebox, filedialog
 import threading
@@ -60,6 +60,13 @@ class InterfaceApp:
             self.monitor.iniciar()
         
         ssh_config = config.get_snmp_config()
+        # Registra o callback SEMPRE, mesmo que o SSH esteja desabilitado agora,
+        # pois o SSH Manager pode já ter sido iniciado em outro ponto do fluxo
+        # e/ou ser habilitado depois (ex: _reiniciar_sistemas). Sem isso, o
+        # callback nunca é setado e toda coleta salva sem notificar a interface.
+        # Usa o wrapper thread-safe (ver _atualizar_dados_thread_safe) porque
+        # o SSH Manager chama esse callback de dentro da thread de coleta.
+        self.ssh_manager.set_callback_atualizar(self._atualizar_dados_thread_safe)
         if ssh_config.get("enabled", False):
             self.ssh_manager.iniciar()
         
@@ -78,6 +85,18 @@ class InterfaceApp:
         self.atualizar_interface()
         self.janela.mainloop()
     
+    def _atualizar_dados_thread_safe(self):
+        """
+        Chamado pelo SSH Manager a partir de uma thread de background.
+        Tkinter/customtkinter NÃO são thread-safe - mexer no Treeview fora
+        da thread principal causa erros intermitentes como
+        '_tkinter.TclError: Item ... not found' quando essa chamada colide
+        com o self.atualizar_interface() (que roda a cada 2s na thread
+        principal via self.janela.after). Por isso agendamos aqui em vez
+        de chamar self.atualizar_dados() diretamente.
+        """
+        self.janela.after(0, self.atualizar_dados)
+
     def _todos_equipamentos(self):
         return self.equipamentos + self.servidores + self.energias + self.servicos
     
@@ -117,7 +136,11 @@ class InterfaceApp:
         self.monitor.atualizar_configuracoes(self._todos_equipamentos(), self.config.get_configuracoes(), self.clientes)
         ssh_config = self.config.get_snmp_config()
         self.ssh_manager.parar()
-        if ssh_config.get("enabled", False): self.ssh_manager.iniciar()
+        # Registra o callback SEMPRE, independente de enabled (mesmo motivo do __init__)
+        # e usando o wrapper thread-safe pelo mesmo motivo.
+        self.ssh_manager.set_callback_atualizar(self._atualizar_dados_thread_safe)
+        if ssh_config.get("enabled", False):
+            self.ssh_manager.iniciar()
         if self.tunnel_manager:
             from tunnel_manager import reiniciar_tunel
             threading.Thread(target=reiniciar_tunel, daemon=True).start()
@@ -261,6 +284,7 @@ class InterfaceApp:
         threading.Thread(target=executar_teste, daemon=True).start()
     
     def atualizar_dados(self):
+        """Atualiza status/latência e dados SSH (SSID/MAC/Clientes) de todos os equipamentos"""
         estado = self.monitor.estado_dispositivos
         
         for eq in self.equipamentos:
@@ -268,6 +292,13 @@ class InterfaceApp:
             if ip in estado:
                 eq["status"] = "ONLINE" if estado[ip].get("online") else "OFFLINE"
                 eq["latencia"] = estado[ip].get("latencia", 0)
+            # Traz SSID/MAC/Clientes do cache do SSH Manager (o objeto que o
+            # ssh_manager atualiza é uma lista diferente desta aqui - sem isso
+            # os novos dados nunca chegam até a interface)
+            if ip:
+                dados_ssh = self.ssh_manager.get_dados_cache(ip)
+                if dados_ssh:
+                    eq["dados_snmp"] = dados_ssh
         
         for cli in self.clientes:
             ip = cli.get("ip", "")
@@ -326,7 +357,6 @@ class InterfaceApp:
             id_alterado = tunnel_manager.ultima_alteracao
             
             if id_alterado == -1:
-                # Localidades
                 self.localidades = self.db.listar_localidades()
             elif id_alterado:
                 todos = self.db.listar_equipamentos()
@@ -347,10 +377,8 @@ class InterfaceApp:
                     elif tipo == 'servico':
                         self._atualizar_item_lista(self.servicos, item_atualizado)
                 else:
-                    # ✅ FOI EXCLUÍDO - Remove das listas locais (sem consultar banco)
                     self._remover_item_das_listas(id_alterado)
             
-            # ✅ RECARREGA CLIENTES DO BANCO SEMPRE!
             self.clientes = self.db.listar_clientes()
             self.monitor.atualizar_configuracoes(self._todos_equipamentos(), self.config.get_configuracoes(), self.clientes)
             tunnel_manager.ultima_alteracao = None
